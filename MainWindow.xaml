@@ -1,0 +1,264 @@
+<Window x:Class="MP4toGIFConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MP4toGIFConverter"
+        mc:Ignorable="d"
+        Title="MP4 video to GIF converter - by Adithyanraj" Height="700" Width="900"
+        Background="#1E1E1E" Foreground="White">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title bar with logo -->
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="Images/logo.png" Width="24" Height="24" Margin="0,0,10,0"/>
+            <TextBlock Grid.Column="1" Text="MP4 video to GIF converter" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center"/>
+        </Grid>
+
+        <!-- Toolbar -->
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+            <Button x:Name="ToGifButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0" Click="ConvertButton_Click">
+                <StackPanel>
+                    <Image Source="Images/gif_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="to GIF" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="ToWebPButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0" Click="ToWebPButton_Click">
+                <StackPanel>
+                    <Image Source="Images/webp_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="to WebP" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="ToAPNGButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0" Click="ToAPNGButton_Click">
+                <StackPanel>
+                    <Image Source="Images/apng_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="to APNG" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="CropVideoButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0" Click="CropVideoButton_Click">
+                <StackPanel>
+                    <Image Source="Images/crop_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="crop video" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="ResizeButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/resize_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="resize" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="RotateButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/rotate_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="rotate" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="ReverseButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/reverse_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="reverse" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="MuteButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/mute_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="mute" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="CutVideoButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/cut_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="cut video" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="SpeedButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/speed_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="speed" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="SubtitlesButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0">
+                <StackPanel>
+                    <Image Source="Images/subtitles_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="subtitles" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="SaveButton" Width="70" Height="70" Margin="5" Background="#2D2D2D" Foreground="White" BorderThickness="0" Click="SaveButton_Click">
+                <StackPanel>
+                    <Image Source="Images/save_icon.png" Width="30" Height="30"/>
+                    <TextBlock Text="save" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Button>
+        </WrapPanel>
+
+        <!-- Preview Area -->
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Video Preview -->
+            <Border Grid.Column="0" Background="Black" BorderBrush="#404040" BorderThickness="1">
+                <Grid>
+                    <MediaElement x:Name="VideoPreview" LoadedBehavior="Manual" Stretch="Uniform" 
+                                  MediaOpened="VideoPreview_MediaOpened" MediaEnded="VideoPreview_MediaEnded"/>
+                    
+                    <TextBlock x:Name="VideoPlaceholder" Text="Drag &amp; drop video file here or click Browse to select" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"
+                               Visibility="{Binding IsFileLoaded, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=Invert}"/>
+                    
+                    <Button x:Name="BrowseButton" Content="Browse..." HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                            Margin="0,0,0,20" Padding="10,5" Click="BrowseButton_Click"/>
+                    
+                    <!-- Video Controls -->
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,0,5"
+                                Visibility="{Binding IsFileLoaded, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <Button x:Name="PlayPauseButton" Content="▶" Width="30" Height="30" Background="#3D3D3D" Foreground="White" Margin="5,0" Click="PlayPauseButton_Click"/>
+                        <Button Content="⏹" Width="30" Height="30" Background="#3D3D3D" Foreground="White" Margin="5,0" Click="StopButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            
+            <!-- Separator -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                          Background="#404040" ShowsPreview="True"/>
+            
+            <!-- GIF Preview -->
+            <Border Grid.Column="2" Background="Black" BorderBrush="#404040" BorderThickness="1">
+                <Grid>
+                    <Image x:Name="GifPreview" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <TextBlock x:Name="GifPlaceholder" Text="Generated GIF will appear here" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                    
+                    <!-- Loading Overlay -->
+                    <Grid x:Name="LoadingOverlay" Background="#80000000" Visibility="Collapsed">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock x:Name="ConversionStatus" Text="Converting..." FontSize="16" Foreground="White" HorizontalAlignment="Center"/>
+                            <ProgressBar x:Name="ConversionProgress" Width="200" Height="15" Margin="0,10,0,0" Minimum="0" Maximum="100" Value="0"/>
+                            <TextBlock x:Name="ProgressText" Text="0%" Foreground="White" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Video Info -->
+        <TextBlock Grid.Row="3" x:Name="FileInfoText" Foreground="White" Margin="0,0,0,10"/>
+
+        <!-- Conversion Options -->
+        <Grid Grid.Row="4" Margin="0,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Start time -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Start time (seconds):" VerticalAlignment="Center" Foreground="White"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="StartTimeBox" Width="70" Height="28" HorizontalAlignment="Left" Background="#2D2D2D" Foreground="White" BorderBrush="#404040" Text="0"/>
+
+            <!-- End time -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="End time (seconds):" VerticalAlignment="Center" Foreground="White" Margin="0,10,0,0"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="EndTimeBox" Width="70" Height="28" HorizontalAlignment="Left" Background="#2D2D2D" Foreground="White" BorderBrush="#404040" Margin="0,10,0,0" Text="16"/>
+
+            <!-- Size -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Size:" VerticalAlignment="Center" Foreground="White" Margin="0,10,0,0"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" x:Name="SizeComboBox" Width="300" Height="28" HorizontalAlignment="Left" Background="#2D2D2D" BorderBrush="#404040" Margin="0,10,0,0" SelectedIndex="0">
+                <ComboBox.Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </ComboBox.Style>
+                <ComboBox.Resources>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </ComboBox.Resources>
+                <ComboBoxItem Content="Original (up to 800px)"/>
+                <ComboBoxItem Content="600xAUTO"/>
+                <ComboBoxItem Content="540xAUTO (for Tumblr)"/>
+                <ComboBoxItem Content="500xAUTO"/>
+                <ComboBoxItem Content="480xAUTO"/>
+                <ComboBoxItem Content="400xAUTO"/>
+                <ComboBoxItem Content="320xAUTO"/>
+                <ComboBoxItem Content="AUTOx480"/>
+                <ComboBoxItem Content="AUTOx320"/>
+                <ComboBoxItem Content="up to 1200x300 (for wide banner)"/>
+                <ComboBoxItem Content="up to 300x1200 (for skyscraper banner)"/>
+            </ComboBox>
+
+            <!-- Frame rate -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Frame rate (FPS):" VerticalAlignment="Center" Foreground="White" Margin="0,10,0,0"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" x:Name="FrameRateComboBox" Width="300" Height="28" HorizontalAlignment="Left" Background="#2D2D2D" BorderBrush="#404040" Margin="0,10,0,0" SelectedIndex="3">
+                <ComboBox.Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </ComboBox.Style>
+                <ComboBox.Resources>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </ComboBox.Resources>
+                <ComboBoxItem Content="5 (max 60 seconds)"/>
+                <ComboBoxItem Content="7 (max 42 seconds)"/>
+                <ComboBoxItem Content="8 (max 35 seconds)"/>
+                <ComboBoxItem Content="10 (max 30 seconds)"/>
+                <ComboBoxItem Content="12 (max 25 seconds)"/>
+                <ComboBoxItem Content="16 (max 20 seconds)"/>
+                <ComboBoxItem Content="20 (max 15 seconds)"/>
+                <ComboBoxItem Content="25 (max 12 seconds)"/>
+                <ComboBoxItem Content="33 (max 10 seconds)"/>
+            </ComboBox>
+
+            <!-- Convert button -->
+            <Button Grid.Row="4" Grid.Column="1" Content="Convert to GIF!" Width="120" Height="30" Margin="0,20,0,0" 
+                    Background="#007BFF" Foreground="White" BorderThickness="0" HorizontalAlignment="Left" Click="ConvertButton_Click"/>
+        </Grid>
+        
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="5" Height="25" VerticalAlignment="Bottom" Background="#2D2D2D">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText" Text="Ready" Foreground="White"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Author: Adithyanraj" Foreground="#808080" Margin="0,0,10,0"/>
+                    <Image Source="Images/logo.png" Width="16" Height="16"/>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
