@@ -1,4 +1,4 @@
-🎬 GUI Video to GIF Converter /Editor
+🎬 GUI Video to GIF Converter /Edito
 
 ![License](https://img.shields.io/github/license/adithyanraj03/GUI-Video-to-Gif-Editer-Converter)
 ![Issues](https://img.shields.io/github/issues/adithyanraj03/GUI-Video-to-Gif-Editer-Converter)
