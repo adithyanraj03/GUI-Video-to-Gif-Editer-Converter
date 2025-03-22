@@ -1,6 +1,6 @@
 🎬 GUI Video to GIF Converter /Editor
 
-![License](https://img.shields.io/github/license/adithyanraj03/GUI-Video-to-Gif-Editer-Converter)
+![License](https://img.shields.io/github/license/adithyanraj03/Car_Bot_LLM)
 ![Issues](https://img.shields.io/github/issues/adithyanraj03/GUI-Video-to-Gif-Editer-Converter)
 ![Stars](https://img.shields.io/github/stars/adithyanraj03/GUI-Video-to-Gif-Editer-Converter)
 ![Forks](https://img.shields.io/github/forks/adithyanraj03/GUI-Video-to-Gif-Editer-Converter)
