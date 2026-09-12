@@ -145,3 +145,4 @@ Project Link: [https://github.com/adithyanraj03/GUI-Video-to-Gif-Editer-Converte
 - [Icons8](https://icons8.com/) for the application icons
 
 ---
+
